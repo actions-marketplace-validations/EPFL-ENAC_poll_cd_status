@@ -1,6 +1,6 @@
 # Polling for status with a timeout
 
-This action makes a GET request to a given URL until the status is `complete` or `failed`
+This action makes a GET request to a given URL until the status is `finished` or `error`
 Used after launching an action that executes asynchronously and polling for that action's status
 Initially created for checking if a kubernetes deployment is complete
 
@@ -20,7 +20,7 @@ Interval between polling in seconds
 
 ## Example usage
 ```
-uses: cheerz/poll_status@v1
+uses: EPFL-ENAC/poll_cd_status@v0.2.0
 with:
   url: "https://www.example.com/deployments/1"
   timeout: 20
@@ -31,9 +31,9 @@ This script expects a json response from the polling url in the following format
 
 ```
 {
-  status: "complete"/"failed"
+  status: "finished" | "error"
 }
 ```
 
-Script exit with 1 when status is `failed` and 0 when `complete`
-Exit with 1 if timeout reached before receiving `failed` or `complete` as status
+Script exit with 1 when status is `error` and 0 when `finished`
+Exit with 1 if timeout reached before receiving `error` or `finished` as status
