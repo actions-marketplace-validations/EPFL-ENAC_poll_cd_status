@@ -47,16 +47,16 @@ function poll_status {
   while true;
   do
     curl -X POST -H "Content-Type: application/json" -d "{\"key\":\"$API_CD_TOKEN\",\"name\":\"$APP_NAME\",\"job_id\":\"$JOB_ID\"}" $url -s > temp.json;
-    iatus=$(cat temp.json | jq -cr '.status');
+    export iatus=$(cat temp.json | jq -cr '.status');
     cat temp.json;
     echo "$(date +%H:%M:%S): status is $iatus";
     if [[ "$iatus" == "finished" || "$iatus" == "error" ]]; then
         rm temp.json
         if [[ "$iatus" == "error" ]]; then
-          echo "Deployment failed!"
+          echo "Deployment error!"
           exit 1;
         else
-          echo "Deployment complete!";
+          echo "Deployment finished!";
           exit 0;
         fi
         break;
@@ -67,5 +67,5 @@ function poll_status {
   rm temp.json
 }
 
-printf "\nPolling '${url%\?*}' every $interval seconds, until status is 'complete'\n"
+printf "\nPolling '${url%\?*}' every $interval seconds, until status is 'finished'\n"
 poll_status
