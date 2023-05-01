@@ -46,11 +46,10 @@ done
 function poll_status {
   while true;
   do
-    echo $API_CD_TOKEN; echo $APP_NAME; echo $JOB_ID;
-    status=$(curl -X POST -H "Content-Type: application/json" -d "{\"key\":\"$API_CD_TOKEN\",\"name\":\"$APP_NAME\",\"job_id\":\"$JOB_ID\"}" $url -s | jq -cr '.status');
-    echo "$(date +%H:%M:%S): status is $status";
-    if [[ "$status" == "finished" || "$status" == "error" ]]; then
-        if [[ "$status" == "error" ]]; then
+    iatus=$(curl -X POST -H "Content-Type: application/json" -d "{\"key\":\"$API_CD_TOKEN\",\"name\":\"$APP_NAME\",\"job_id\":\"$JOB_ID\"}" $url -s | jq -cr '.status');
+    echo "$(date +%H:%M:%S): status is $iatus";
+    if [[ "$iatus" == "finished" || "$iatus" == "error" ]]; then
+        if [[ "$iatus" == "error" ]]; then
           echo "Deployment failed!"
           exit 1;
         else
