@@ -20,7 +20,7 @@ Interval between polling in seconds
 
 ## Example usage
 ```
-uses: EPFL-ENAC/poll_cd_status@v0.2.0
+uses: EPFL-ENAC/poll_cd_status@0.3.0
 with:
   url: "https://www.example.com/deployments/1"
   timeout: 20
