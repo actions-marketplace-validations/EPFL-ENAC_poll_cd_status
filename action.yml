@@ -1,6 +1,6 @@
 # action.yml
 name: Http Polling
-author: yao
+authors: yao, guilbep
 description: "Wait for response code from a URL with timeout"
 inputs:
   url:

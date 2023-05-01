@@ -33,8 +33,8 @@ function poll_status {
   do
     status=$(curl $url -s | jq '.status');
     echo "$(date +%H:%M:%S): status is $status";
-    if [[ "$status" == "\"complete\"" || "$status" == "\"failed\"" ]]; then
-        if [[ "$status" == "\"failed\"" ]]; then
+    if [[ "$status" == "\"finished\"" || "$status" == "\"error\"" ]]; then
+        if [[ "$status" == "\"error\"" ]]; then
           echo "Deployment failed!"
           exit 1;
         else
