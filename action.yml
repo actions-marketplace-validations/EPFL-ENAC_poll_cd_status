@@ -8,6 +8,15 @@ inputs:
   url:
     description: URL to poll
     required: true
+  APP_NAME:
+    description: APP_NAME
+    required: true
+  API_CD_TOKEN:
+    description: API_CD_TOKEN
+    required: true
+  JOB_ID:
+    description: JOB_ID
+    required: true
   timeout:
     description: "Timeout before giving up in seconds"
     required: false
@@ -28,5 +37,8 @@ runs:
         echo "${{ github.action_path }}"
         timeout ${{inputs.timeout }} ${GITHUB_ACTION_PATH}/main.sh \
         --url="${{ inputs.url }}" \
+        --APP_NAME="${{ inputs.APP_NAME }}" \
+        --API_CD_TOKEN="${{ inputs.API_CD_TOKEN }}" \
+        --JOB_ID="${{ inputs.JOB_ID }}" \
         --interval="${{ inputs.interval }}"\
       shell: bash
