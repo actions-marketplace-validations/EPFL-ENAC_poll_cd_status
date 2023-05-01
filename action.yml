@@ -1,7 +1,7 @@
 # action.yml
-name: Http Polling
+name: Wait for a http json status field
 authors: yao, guilbep
-description: "Wait for response code from a URL with timeout"
+description: "Wait for http json response status field to match finished or error for a URL with timeout"
 inputs:
   url:
     description: URL to poll
