@@ -1,5 +1,7 @@
 # action.yml
 name: Wait for a http json status field
+icon: activity
+color: green
 authors: yao, guilbep
 description: "Wait for http json response status field to match finished or error for a URL with timeout"
 inputs:
