@@ -31,10 +31,10 @@ done
 function poll_status {
   while true;
   do
-    status=$(curl $url -s | jq '.status');
+    status=$(curl $url -s | jq -cr '.status');
     echo "$(date +%H:%M:%S): status is $status";
-    if [[ "$status" == "\"finished\"" || "$status" == "\"error\"" ]]; then
-        if [[ "$status" == "\"error\"" ]]; then
+    if [[ "$status" == "finished" || "$status" == "error" ]]; then
+        if [[ "$status" == "error" ]]; then
           echo "Deployment failed!"
           exit 1;
         else
